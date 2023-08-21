@@ -4,7 +4,7 @@ services:
 
   client_app:
     build:
-    dockerfile: Dockerfile
+      dockerfile: Dockerfile
     container_name: client-app-container
     ports:
       - "4390:4390"
