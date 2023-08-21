@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+
+  client_app:
+    build:
+    dockerfile: Dockerfile
+    container_name: client-app-container
+    ports:
+      - "4390:4390"
+    depends_on:
+      - nginx
+
+  nginx:
+    image: nginx
+    links:
+      - client_app
+    volumes:
+      - "./etc/nginx/conf.d/:/etc/nginx/conf.d/"
+    environment:
+      VIRTUAL_HOST: 1562863-cd94457.twc1.net
+      LETSENCRYPT_HOST: 1562863-cd94457.twc1.net
+      LETSENCRYPT_EMAIL: l1zzard2444@gmail.com
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./nginx/vhost.d:/etc/nginx/vhost.d"
+      - "./nginx/html:/usr/share/nginx/html"
+      - "./nginx/certs:/etc/nginx/certs"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx-proxy"
