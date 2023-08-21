@@ -1,5 +1,9 @@
 version: '2'
 
+networks:
+  my_network:
+    driver: bridge
+
 services:
 
   client_app:
@@ -7,9 +11,9 @@ services:
       dockerfile: Dockerfile
     container_name: client-app-container
     ports:
-      - "4390:4390"
-    depends_on:
-      - nginx
+      - "3000:3000"
+    networks:
+      - my_network
 
   nginx:
     image: nginx
@@ -21,6 +25,8 @@ services:
       VIRTUAL_HOST: 1562863-cd94457.twc1.net
       LETSENCRYPT_HOST: 1562863-cd94457.twc1.net
       LETSENCRYPT_EMAIL: l1zzard2444@gmail.com
+    networks:
+      - my_network
 
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -32,6 +38,8 @@ services:
       - "./nginx/html:/usr/share/nginx/html"
       - "./nginx/certs:/etc/nginx/certs"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    networks:
+      - my_network
 
   letsencrypt-nginx-proxy-companion:
     image: jrcs/letsencrypt-nginx-proxy-companion
@@ -39,3 +47,5 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     volumes_from:
       - "nginx-proxy"
+    networks:
+      - my_network
