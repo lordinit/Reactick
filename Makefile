@@ -1,5 +1,3 @@
-.PHONY: up down update
-
 up:
     docker-compose up -d --build
 
