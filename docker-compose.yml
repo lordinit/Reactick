@@ -6,11 +6,12 @@ networks:
 
 services:
 
-  jenkins:
+  jenkins-ci:  # Обновленное имя хоста
     image: jenkins/jenkins:lts
     ports:
       - "8080"
-
+    networks:
+      - my_network
 
   client_app:
     build:
@@ -24,7 +25,7 @@ services:
   nginx:
     image: nginx
     links:
-      - jenkins
+      - jenkins-ci  # Измененное имя хоста
       - client_app
     volumes:
       - "./etc/nginx/conf.d/:/etc/nginx/conf.d/"
