@@ -6,12 +6,12 @@ networks:
 
 services:
 
-  jenkins-ci:  # Обновленное имя хоста
-    image: jenkins/jenkins:lts
-    ports:
-      - "8080"
-    networks:
-      - my_network
+  # jenkins-ci:  # Обновленное имя хоста
+  #   image: jenkins/jenkins:lts
+  #   ports:
+  #     - "8080"
+  #   networks:
+  #     - my_network
 
   client_app:
     build:
