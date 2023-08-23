@@ -8,8 +8,6 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
-    volumes:
-      - './jenkins_home:/var/jenkins_home'
     ports:
       - "8080"
 
