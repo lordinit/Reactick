@@ -1,0 +1,17 @@
+name: Hello World Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Secret Key
+        run: echo "My secret key is ${{ secrets.MY_SECRET_KEY }}"
