@@ -20,4 +20,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_SECRET_KEY }}
           script: |
-            mkdir /path/on/remote/new_director
+            mkdir new_director
