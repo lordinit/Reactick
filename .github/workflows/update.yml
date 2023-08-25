@@ -1,0 +1,26 @@
+name: Update Docker Containers
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa $SERVER_IP >> ~/.ssh/known_hosts
+
+      - name: Deploy and Update
+        run: |
+          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && docker-compose up -d"
+          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && docker-compose up -d --build"
