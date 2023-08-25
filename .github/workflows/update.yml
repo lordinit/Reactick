@@ -20,4 +20,4 @@ jobs:
         
     - name: Connect to Remote Server and Rebuild Docker Containers
       run: |
-        ssh -o StrictHostKeyChecking=no -i $SSH_SECRET_KEY root@${{ secrets.SERVER_IP }} "cd /path/to/your/directory && docker-compose up -d --build"
+        ssh -o StrictHostKeyChecking=no -i $SSH_SECRET_KEY root@${{ secrets.SERVER_IP }} "cd /proj/Reactick && docker-compose up -d --build"
