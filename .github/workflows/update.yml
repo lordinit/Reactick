@@ -16,10 +16,10 @@ jobs:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "$SSH_SECRET_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
       - name: Git Pull and Deploy
         run: |
-          ssh -i ~/.ssh/id_rsa root@[$SERVER_IP] "cd /root/proj/Reactick && git pull && docker-compose up -d"
-          ssh -i ~/.ssh/id_rsa root@[$SERVER_IP] "cd /root/proj/Reactick && git pull && docker-compose up -d --build"
+          ssh -i ~/.ssh/id_rsa root@${{ secrets.SERVER_IP }} "cd /root/proj/Reactick && git pull && docker-compose up -d"
+          ssh -i ~/.ssh/id_rsa root@${{ secrets.SERVER_IP }} "cd /root/proj/Reactick && git pull && docker-compose up -d --build"
