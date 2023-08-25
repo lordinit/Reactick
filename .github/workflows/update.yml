@@ -1,25 +1,23 @@
-name: Update Docker Containers
+name: SSH and Docker Workflow
 
 on:
   push:
     branches:
-      - main
+      - main 
 
 jobs:
   deploy:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SERVER_IP }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-      - name: Git Pull and Deploy
-        run: |
-          ssh -i ~/.ssh/id_rsa root@${{ secrets.SERVER_IP }} "cd /root/proj/Reactick && git pull && docker-compose up -d"
-          ssh -i ~/.ssh/id_rsa root@${{ secrets.SERVER_IP }} "cd /root/proj/Reactick && git pull && docker-compose up -d --build"
+    - name: Setup SSH Key
+      uses: webfactory/ssh-agent@v0.5.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_SECRET_KEY }}
+        
+    - name: Connect to Remote Server and Rebuild Docker Containers
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $SSH_SECRET_KEY root@${{ secrets.SERVER_IP }} "cd /path/to/your/directory && docker-compose up -d --build"
