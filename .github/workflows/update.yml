@@ -20,7 +20,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa $SERVER_IP >> ~/.ssh/known_hosts
 
-      - name: Deploy and Update
+      - name: Git Pull and Deploy
         run: |
-          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && docker-compose up -d"
-          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && docker-compose up -d --build"
+          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && git pull && docker-compose up -d"
+          ssh -i ~/.ssh/id_rsa user@$SERVER_IP "cd /root/proj/Reactick && git pull && docker-compose up -d --build"
