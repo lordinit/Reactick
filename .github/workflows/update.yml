@@ -27,4 +27,5 @@ jobs:
 
       - name: Cleanup Docker
         run: |
+          docker-compose down --remove-orphans
           docker image prune -f
