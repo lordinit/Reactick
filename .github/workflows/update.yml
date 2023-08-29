@@ -26,6 +26,5 @@ jobs:
             docker-compose up -d --build
 
       - name: Cleanup Docker
-        uses: appleboy/docker-prune@master
-        with:
-          filters: "dangling=true"
+        run: |
+          docker image prune -f
