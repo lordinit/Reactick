@@ -9,6 +9,7 @@ services:
 
   client_app:
     build:
+      context: .
       dockerfile: Dockerfile
     container_name: client-app-container
     ports:
