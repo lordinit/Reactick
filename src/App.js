@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const logoCount = 15; // Количество повторений логотипа
+  const logoCount = 3; // Количество повторений логотипа
   const logos = Array.from({ length: logoCount }, (_, index) => (
     <img key={index} src={logo} className="App-logo" alt="logo" />
   ));
