@@ -9,7 +9,7 @@ services:
   server_app:
     build:
       context: ./server/
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     container_name: server-app-container
     ports:
       - "8080:8080"
