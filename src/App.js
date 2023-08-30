@@ -13,6 +13,17 @@ function App() {
         <div className="logos-container">
           {logos}
         </div>
+        <p>
+         ---- <code>Бэкенд</code> ---
+        </p>
+        <a
+          className="App-link"
+          href="https://1562863-cd94457.twc1.net/api"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Клик
+        </a>
       </header>
     </div>
   );
