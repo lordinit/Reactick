@@ -14,7 +14,7 @@ function App() {
           {logos}
         </div>
         <p>
-         ---- <code>Бэкенд</code> ---
+         ---- <code>Бэкенд</code> ----
         </p>
         <a
           className="App-link"
