@@ -14,6 +14,7 @@ async function bootstrap() {
     //   httpsOptions,
     // }
   );
+  app.setGlobalPrefix('api');
   await app.listen(8080);
 }
 bootstrap();
