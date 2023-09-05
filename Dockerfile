@@ -1,15 +1,16 @@
-FROM node:20.1.0
+FROM node:18.16.1
+
 
 WORKDIR /app
 
-# Установка переменных окружения
-
+# Install your project dependencies
 COPY package*.json ./
+RUN npm install
 
-RUN npm ci
-
+# Copy your application files
 COPY . .
 
+# Build and run your application
 RUN npm run build
 
 EXPOSE 3000
