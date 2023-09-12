@@ -27,8 +27,10 @@ function App() {
         <p>
          ---- <code>Реконструкция</code> ----
         </p>
-        <button onClick={increaseLogoCount}>+1</button>
-        <button onClick={decreaseLogoCount}>-1</button>
+        <div className="button-container">
+          <button onClick={decreaseLogoCount}>-1</button>
+          <button onClick={increaseLogoCount}>+1</button>
+        </div>
         <a
           className="App-link"
           href="https://1562863-cd94457.twc1.net/api"
