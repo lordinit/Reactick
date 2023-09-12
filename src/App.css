@@ -5,11 +5,13 @@
 .App-logo {
   height: 20vmin;
   pointer-events: none;
+  animation: App-logo-spin infinite linear 1s;
+  animation-duration: 0s; /* Initialize with 0s */
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 10s linear;
+    animation-duration: var(--rotation-speed);
   }
 }
 
@@ -58,4 +60,20 @@ button {
 button:focus {
   box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
   outline: 0;
+}
+
+/* Стили для ползунка */
+.speed-control {
+  margin-bottom: 20px;
+}
+
+.speed-control label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.speed-control input[type="range"] {
+  width: 100%;
+  /* Set animation duration directly based on rotationSpeed */
+  animation-duration: var(--rotation-speed);
 }
