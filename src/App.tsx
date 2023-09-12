@@ -31,7 +31,7 @@ function App() {
         <button onClick={decreaseLogoCount}>-1</button>
         <a
           className="App-link"
-          href="https://logistics.foxford.pro/api"
+          href="https://1562863-cd94457.twc1.net/api"
           target='_blank'
           rel="noopener noreferrer"
         >
