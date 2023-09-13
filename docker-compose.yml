@@ -33,7 +33,6 @@ services:
       - client_app
     volumes:
       - "./etc/nginx/conf.d/:/etc/nginx/conf.d/"
-      - "/root/proj/Reactick/nginx/certs/1562863-cd94457.twc1.net:/etc/nginx/certs/1562863-cd94457.twc1.net"
     environment:
       VIRTUAL_HOST: 1562863-cd94457.twc1.net
       LETSENCRYPT_HOST: 1562863-cd94457.twc1.net
