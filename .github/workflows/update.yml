@@ -1,4 +1,4 @@
-name: Update docker
+name: Update Docker
 
 on:
   push:
@@ -22,6 +22,6 @@ jobs:
           script: |
             cd ~/proj/Reactick
             git pull
-            docker-compose down
-            docker-compose up -d --build
+            docker-compose down client_app server_app
+            docker-compose up -d --build client_app server_app
             docker image prune -f
